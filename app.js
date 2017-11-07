@@ -4,20 +4,10 @@ const volleyball = require('volleyball');
 const app = express();
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
+const bodyParser = require('body-parser');
 
-// var locals = {
-//   title: 'An Example',
-//   people: [
-//       { name: 'Gandalf'},
-//       { name: 'Frodo' },
-//       { name: 'Hermione'}
-//   ]
-// };
+app.use(bodyParser.json());
 
-// nunjucks.render('index.html', locals, function(err, output){
-//   if (err) throw err;
-//   console.log(output);
-// });
 app.set('view engine', 'html'); // have res.render work with html files
 app.engine('html', nunjucks.render);
 nunjucks.configure('views', { noCache: true });
